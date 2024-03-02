@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{%block title%} <title>Giriş Yap</title> {%endblock%} 
+
+{% block content %}
+    
+    <section>
+        
+        <form method="POST" action="" class="signin-form">
+            {{ form.hidden_tag() }}
+              <div class="form-group">
+                {{ form.username(class="form-control") }}
+              </div>
+        <div class="form-group">
+            {{ form.password(class="form-control") }}
+          
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="form-control btn btn-primary submit px-3") }}		
+        </div>
+    </section>
+
+{% endblock %}
