@@ -92,7 +92,7 @@ def make_session_permanent():
 @app.route('/')
 def home():
     if current_user.is_authenticated:
-        return  "Merhaba Dünya"
+        return  render_template('base.html')
     else:
         return "Lütfen giriş yapın"
 
