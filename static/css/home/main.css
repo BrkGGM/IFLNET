@@ -1,0 +1,58 @@
+section.ana {
+  margin-left: 10em;
+  display: inline-flex;
+}
+section.ana .yazilar {
+  margin: 5em 0.5em 0 0.5em;
+  width: 60em;
+}
+section.ana .yazilar span {
+  font-weight: bold;
+  margin-left: 1em;
+  margin-top: -0.5em;
+  overflow: hidden;
+  color: var(--vurgu);
+}
+section.ana .yazilar a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+section.ana .yazilar a {
+  text-decoration: none;
+  color: var(--acik-gri);
+}
+section.ana .yazilar li:hover {
+  border: 2px solid var(--vurgu);
+}
+section.ana .yazilar li {
+  background-color: var(--koyu-gri);
+  margin-top: 1em;
+  margin-left: -1.5em;
+  width: 57em;
+  border: 1px dotted var(--vurgu);
+  border-radius: 1em;
+  height: 6.8em;
+  overflow-y: hidden;
+}
+section.ana .yazilar li .post-ici {
+  margin-left: 0.3em;
+}
+section.ana .filtre {
+  position: fixed;
+  background-color: whitesmoke;
+  width: 10em;
+  height: 999em;
+  margin-left: 61em;
+  border-left: 1px solid lightgray;
+}
+section.ana .filtre ul {
+  margin-top: 2em;
+}
+section.ana .filtre ul span {
+  paddings-bottom: 2em;
+}
+section.ana .filtre ul li {
+  margin-top: 1em;
+  margin-left: -0.5em;
+  color: black;
+}/*# sourceMappingURL=main.css.map */

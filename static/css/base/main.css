@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 :root {
-  --primary-color: #ffa31a;
-  --gray:	#808080;
-  --light-black: #292929;
-  --black: #1b1b1b;
+  --main: #000000;
+  --vurgu:	#00FFFF;
+  --koyu-gri: #333333;
+  --acik-gri: #CCCCCC;
 }
 
 span {
@@ -12,8 +12,8 @@ span {
 }
 
 body {
-  display: inline-flex;
-  background: whitesmoke;
+  display: inline-block;
+  background: var(--main);
   font-family: "Poppins";
   margin: 0;
   position: relative;
@@ -24,10 +24,13 @@ ul {
 }
 
 .navbar {
-  background: black;
-  padding: 1em;
-  width: 100px;
-  height: 95.6vh;
+  position: fixed;
+  display: grid;
+  background: var(--main);
+  border-right: 1px solid var(--vurgu);
+  padding: 0 2em 0 3.7em;
+  width: 70px;
+  height: 999em;
 }
 .navbar nav {
   display: none;
@@ -35,6 +38,9 @@ ul {
 .navbar .logo {
   color: white;
   margin-left: -3em;
+}
+.navbar .logo img {
+  border-radius: 5em;
 }
 .navbar .container {
   display: flex;
@@ -47,6 +53,14 @@ ul {
 }
 .navbar ul li {
   margin: 4em 0 4em 0;
+}
+.navbar ul li a:link {
+  color: var(--vurgu);
+  text-decoration: none;
+}
+.navbar ul li a:visited {
+  color: var(--vurgu);
+  text-decoration: none;
 }
 .navbar .mobile-menu {
   color: white;

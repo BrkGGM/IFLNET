@@ -43,54 +43,9 @@ class Yazilar(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     message = db.Column(db.String(10000), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    baslik = db.Column(db.String(50), nullable=False)
+    baslik = db.Column(db.String(50), nullable=False, unique=True)
 
 
-class RegisterForm(FlaskForm):
-    username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Kullanıcı Adı"})
-
-    password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Şifre"})
-    
-    kod = StringField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Kayıt Kodu"})
-    
-    submit = SubmitField('Kayıt Ol')
-
-    def validate_username(self, username):
-
-        username_value = username.data
-
-        regex = r"^[A-Za-z0-9_.]+$"
-        if not re.match(regex, username_value):
-            flash("Kullanıcı adı yalnızca harf, sayı, alt çizgi ve nokta içermelidir.")
-            raise ValidationError("Kullanıcı adı yalnızca harf, sayı, alt çizgi ve nokta içermelidir.")
-
-        existing_user_username = User.query.filter_by(
-            username=username.data.lower()).first()
-        if existing_user_username:
-            flash('Bu kullanıcı adı zaten mevcut, lütfen başka bir kullanıcı adı seçiniz.')
-            raise ValidationError('Bu kullanıcı adı zaten mevcut, lütfen başka bir ad seçiniz.')
-
-
-class LoginForm(FlaskForm):
-    username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Kullanıcı Adı"})
-
-    password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Şifre"})
-
-    submit = SubmitField('Giriş Yap')
-
-    def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
-        if not user:
-            
-            flash("Kullanıcı adı veya şifre hatalı.")
-            raise ValidationError("Kullanıcı adı veya şifre hatalı.")
-            return(user)
-        
 
 
 
@@ -111,11 +66,13 @@ def home():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data.lower()).first()
+    
+    if request.method == 'POST':
+        password = request.form.get('password')
+        username = request.form.get('username')
+        user = User.query.filter_by(username=username.lower()).first()
         if user:
-            if bcrypt.check_password_hash(user.password, form.password.data):
+            if bcrypt.check_password_hash(user.password, password):
                 login_user(user)
                 #user.last_login_device = request.user_agent.string
                 #user.last_login_ip = request.remote_addr
@@ -125,26 +82,26 @@ def login():
             else:
                 flash("Kullanıcı adı veya şifre hatalı.")
                 
-    return render_template('login.html', form=form)
+    return render_template('login.html')
 
 
 @ app.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegisterForm()
+    
 
-    if form.validate_on_submit():
-        if form.kod.data == 'iflhub2024':
+    if request.method == 'POST':
+        password = request.form.get('password')
+        username = request.form.get('username')
+        email = request.form.get('email')
 
-            hashed_password = bcrypt.generate_password_hash(form.password.data)
-            new_user = User(username=form.username.data.lower(), password=hashed_password)
-            db.session.add(new_user)
-            db.session.commit()
-            return redirect(url_for('login'))
-        else:
-            flash("Kayıt kodu yanlış!")
-            return redirect(url_for('register'))
+        hashed_password = bcrypt.generate_password_hash(password)
+        new_user = User(username=username.lower(), password=hashed_password)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('login'))
+        
 
-    return render_template('register.html', form=form)
+    return render_template('register.html')
 
 
 
@@ -167,7 +124,12 @@ def yazi_yaz():
 
     return render_template('yazi_yaz.html')
 
-
+@app.route('/yazi/<yazi_baslik>')
+def yazi(yazi_baslik):
+    yazi = Yazilar.query.get(yazi_baslik)
+    if yazi:
+        return render_template('yazi.html', yazi =yazi)
+    return redirect(url_for('home'))
 if __name__ == "__main__":
     #from waitress import serve
     #serve(app, host="87.248.157.245", port=8080)

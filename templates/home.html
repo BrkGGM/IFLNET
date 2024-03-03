@@ -9,9 +9,22 @@
         <div class="yazilar">
             <ul class="yazi">
                 {% for yazi in yazilar|reverse %}
-                    <li><span> {{yazi.baslik}} </span><br> {{yazi.message|safe}} </li>
+                    <li><a href="#"> <div class="post-ici"><span> {{yazi.baslik}} </span><br> {{yazi.message|safe}} </div> </a></li>
                 {% endfor %}
                 
+            </ul>
+        </div>
+
+        <div class="filtre">
+            <ul>
+                <span><b>Filtrele</b></span>
+                
+                <li>Teknoloji</li>
+                <li>Kişisel <br> 
+                    Gelişim</li>
+                <li>Spor</li>
+                <li>Gündem</li>
+                <li>Siyaset</li>
             </ul>
         </div>
     </section>

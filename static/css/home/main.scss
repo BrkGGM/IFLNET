@@ -1,0 +1,65 @@
+section.ana{
+    margin-left: 10em;
+    
+    display: inline-flex;
+
+    .yazilar {
+        margin: 5em 0.5em 0 0.5em;
+        width: 60em;
+        //border: 1px solid black;
+        span{
+            font-weight: bold;
+            margin-left: 1em;
+            margin-top: -.5em;
+            overflow: hidden;
+            color: var(--vurgu);
+        }
+        a {
+            text-decoration: none;
+            color: whitesmoke;
+        }
+        a {
+            text-decoration: none;
+            color: var(--acik-gri);
+        }
+
+        li:hover {
+            //background-color: #a1a1a1;
+            border: 2px solid var(--vurgu);
+        }
+
+        li{
+            background-color: var(--koyu-gri);
+            margin-top: 1em;
+            margin-left: -1.5em;
+            width: 57em;
+            border: 1px dotted var(--vurgu);
+            border-radius: 1em;
+            height: 6.8em;
+            overflow-y: hidden;
+            .post-ici {
+                margin-left: 0.3em;
+            }
+        }
+    }
+    .filtre{
+        position: fixed;
+        background-color: whitesmoke;
+        width: 10em;
+        height: 999em;
+        margin-left: 61em;
+        border-left: 1px solid lightgray;
+        ul{
+            margin-top: 2em;
+            span{
+                paddings-bottom: 2em;
+            }
+            li{
+                margin-top: 1em;
+                margin-left: -.5em;
+                color: black;
+            }
+        }
+        
+    }
+}

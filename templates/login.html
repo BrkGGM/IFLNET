@@ -1,22 +1,63 @@
-{% extends "base.html" %}
-{%block title%} <title>Giriş Yap</title> {%endblock%} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap | IFLNET</title>
+    <link rel="stylesheet" href="../static/css/login/main.css">
+</head>
+<body>
 
-{% block content %}
-    
-    <section>
-        
-        <form method="POST" action="" class="signin-form">
-            {{ form.hidden_tag() }}
-              <div class="form-group">
-                {{ form.username(class="form-control") }}
-              </div>
-        <div class="form-group">
-            {{ form.password(class="form-control") }}
+
+
+
+<div class="login-box">
+    <h2>IFLNET <br> Giriş Yap</h2>
+
+    <div class="flashes">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>
+                            <p>Uyarı !</p> {{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <form id="giris" method="POST">
+      <div class="user-box">
+        <input type="text" name="username" required>
+        <label>Kullanıcı Adı</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="password" required>
+        <label>Şifre</label>
+      </div>
+      <div class="butonlar">
+        <a class="giris-btn" href="#" onclick="myFunction()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Giriş Yap
+          </a>
           
-        </div>
-        <div class="form-group">
-            {{ form.submit(class="form-control btn btn-primary submit px-3") }}		
-        </div>
-    </section>
+          <a href="/register" class="kayit-btn" >Kayıt ol</a>
+      </div>
+      
+    </form>
+  </div>
+  
+    <script> 
+    function myFunction() { 
+        document.getElementById("giris").submit(); 
+    } 
+    </script> 
 
-{% endblock %}
+
+</body>
+</html>
+    
