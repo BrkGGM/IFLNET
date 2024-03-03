@@ -14,7 +14,8 @@ span {
 
 
 body {
-    background: var(--light-black);
+    display: inline-flex;
+    background: whitesmoke;
     font-family: 'Poppins';
     margin: 0;
     //min-height: 100%;
@@ -31,34 +32,15 @@ ul {
 .navbar {
     background: black;
     padding: 1em;
-    
-
-
-
-    .hub {
-        pointer-events: none;
-        color: white ;
-        display: block;
-        font-family: sans-serif;
-        font-weight: bold;
-        font-size: 9vw;
-        //position: absolute;
-        //top: 50%;
-        //left: 50%;
-        //transform: translate(-50%, -50%);
-        }
-
-        .hub span:nth-child(2) {
-            background: #FF9900;
-            color: black;
-            border-radius: 1vw;
-            padding: 0 1vw 1vw 1vw;
-            display: inline-block;
-        }
-
+    width: 100px;
+    height:95.6vh;
 
     nav {
         display: none;
+    }
+    .logo{
+        color: white;
+        margin-left: -3em;
     }
     
     .container {
@@ -66,8 +48,18 @@ ul {
         place-content: space-between;
     }
 
+    ul{
+        display: block;
+        margin-top: 5em;
+        margin-left: -5em;
+        li {
+            margin: 4em 0 4em 0;
+        }
+    }
     .mobile-menu {
+        color: white;
         cursor: pointer;
+        margin-top: 3em;
         width: 50px;
     }
 }

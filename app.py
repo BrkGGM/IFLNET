@@ -39,6 +39,12 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
 
+class Yazilar(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    message = db.Column(db.String(10000), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    baslik = db.Column(db.String(50), nullable=False)
+
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[
@@ -85,6 +91,10 @@ class LoginForm(FlaskForm):
             raise ValidationError("Kullanıcı adı veya şifre hatalı.")
             return(user)
         
+
+
+
+
 @app.before_request
 def make_session_permanent():
     session.permanent = True 
@@ -92,10 +102,10 @@ def make_session_permanent():
 @app.route('/')
 def home():
     if current_user.is_authenticated:
-        return  render_template('base.html')
+        yazilar = Yazilar.query.all()
+        return  render_template('home.html', yazilar = yazilar)
     else:
         return "Lütfen giriş yapın"
-
 
 
 
@@ -135,6 +145,27 @@ def register():
             return redirect(url_for('register'))
 
     return render_template('register.html', form=form)
+
+
+
+@app.route('/yaziyaz' , methods=['GET', 'POST'])
+@login_required
+def yazi_yaz():
+
+    if request.method == 'POST':
+        if current_user.is_authenticated:
+            user_info = User.query.get(current_user.id)
+
+
+            data = request.form.get('yazi')
+            baslik = request.form.get('baslik')
+
+            new_itiraf = Yazilar(message=data, user_id=current_user.id, baslik = baslik)   
+            db.session.add(new_itiraf)
+            db.session.commit()
+            
+
+    return render_template('yazi_yaz.html')
 
 
 if __name__ == "__main__":

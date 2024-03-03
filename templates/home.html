@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{%block title%} <title>IFLNET</title> 
+<link rel="stylesheet" href="../static/css/home/main.css">
+{%endblock%} 
+
+{% block content %}
+    
+    <section class="ana">
+        <div class="yazilar">
+            <ul class="yazi">
+                {% for yazi in yazilar|reverse %}
+                    <li><span> {{yazi.baslik}} </span><br> {{yazi.message|safe}} </li>
+                {% endfor %}
+                
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}
