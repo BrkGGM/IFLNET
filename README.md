@@ -13,7 +13,7 @@ Uyarı : Python'u indirirken altta "Add Python to PATH" diye bir kutucuk olacak 
 #### 2. Dosyaları indirip klasörü
 Üstteki yeşil 'Code' yazısına basarsanız orada 'download zip' seçeneği var oradan indirip dosyaları uygun bir klasöre çıkartabilirsiniz ya da bilgisayarınızda git indirili ise
 
-`git clone https://github.com/BrkGGM/IFLNET/`
+``` console git clone https://github.com/BrkGGM/IFLNET/```
 komudu ile de kopyalayabilirsiniz.
 
 Daha sonra terminal/cmd/powershell'i o klasörün içinde açın.
@@ -21,38 +21,38 @@ Daha sonra terminal/cmd/powershell'i o klasörün içinde açın.
 Windows:
 Dosya yöneticisinden klasörü açtıktan sonra dosya yöneticisinde boş bir alana shift + click yapıp 'Komut işleminde açın'ı seçin ya da direk CMD'yi açıp 
 
-`cd C:\buraya\dosya\yolunu\yazın`
+``` console cd C:\buraya\dosya\yolunu\yazın```
 
 Mac OS:
-`cd /dosya/yolunu/girin`
+``` console cd /dosya/yolunu/girin```
 
 Linux:
-`cd /dosya/yolunu/girin`
+``` console cd /dosya/yolunu/girin```
 
 #### 3. Sanal ortama girin (Opsiyonel)
 Linux
 
-`pip3 install virtualenv --break-system-packages`
+``` console pip3 install virtualenv --break-system-packages```
 
 ya da varsayılan paket yöneticiniz ile python-venv paketini indirin
 
-`python3 -m venv venv`
+``` console python3 -m venv venv```
 
-`source venv/bin/activate`
+``` console source venv/bin/activate```
 
 
 Mac Os 
-`pip3 install virtualenv`
+``` console pip3 install virtualenv```
 
-`python3 -m venv venv`
+``` console python3 -m venv venv```
 
-`source venv/bin/activate`
+``` console source venv/bin/activate```
 
 
 Windows
-`pip install virtualenv`
+``` console pip install virtualenv```
 
-`python -m venv venv`
+``` console python -m venv venv```
 
 
 ``` console 
@@ -64,31 +64,31 @@ venv\Scripts\Activate.ps1
 #### 4. Gerekli paketleri indirin
 Windows:
 
-`pip install -r requirements.txt`
+``` console pip install -r requirements.txt```
 
 Linux/Mac OS: 
 
-`pip3 install -r requirements.txt`
+``` console pip3 install -r requirements.txt```
 
 #### 5. Database'i oluşturun
 
 Windows:
 
-`python db_olustur.py`
+``` console python db_olustur.py```
 
 Linux / Mac OS:
 
-`python3 db_olustur.py`
+``` console python3 db_olustur.py```
 
 #### 6. Çalıştırın
 
 Windows :
 
-`python app.py`
+``` console python app.py```
 
 Linux / Mac OS :
 
-`python3 app.py`
+``` console python3 app.py```
 
 Tamamdır bu kadar basit bundan sonra tek yapmanız gereken tarayıcınızdan [127.0.0.1:5000](127.0.0.1:5000) adresine girmek. IFLNET'i kendi bilgisayarınızda çalıştırıyorsunuz.
 
