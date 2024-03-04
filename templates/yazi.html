@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{%block title%} <title>IFLNET</title> 
+<link rel="stylesheet" href="../static/css/yazi/main.css">
+{%endblock%} 
+
+{% block content %}
+<section class="ana">
+    <div class="yazi">
+        <div class="bas">
+            
+            {% if not user.kaydetti_mi(yazi) %}
+
+            <a href="/yazi/{{yazi.baslik}}/kaydet"><img src="../static/images/kaydet.svg" alt="Kaydet" width="50px"></a>
+            {% else %}
+            <a href="/yazi/{{yazi.baslik}}/kaydet"><img src="../static/images/kaydedildi.png" alt="Kaydetme" width="50px"></a>
+            {% endif %}
+            
+            <h2> {{yazi.baslik}} </h2>
+        </div>
+        
+        <div class="icerik">
+            {{yazi.message|safe}}
+        </div>
+        
+    </div>
+    
+</section>
+{%endblock%}

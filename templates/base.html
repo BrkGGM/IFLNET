@@ -9,70 +9,6 @@
 {% block style %}
 {% endblock %}
 
-<style>
-
-    ::-webkit-scrollbar {
-    width: 10px;
-    }
-
-    /* Track */
-    ::-webkit-scrollbar-track {
-    background: #292929 ; 
-    }
-    
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-    background: #ffa31a; 
-    }
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-    background: #b8791b; 
-    }
-
-
-    .popuplar {
-        .flashes {
-        color: white;
-        li {
-            border: 3px solid red;
-            border-radius: 2em;
-            padding: 1em;
-            margin-right: 2em;
-            background-color: rgb(255, 97, 97) !important;
-        }
-        
-        
-
-
-        p {
-            color: red;
-        }
-    }
-
-    .bilgi {
-        color: white;
-        li {
-            border: 3px solid rgb(21, 0, 255);
-            border-radius: 2em;
-            padding: 1em;
-            margin-right: 2em;
-            background-color: rgb(97, 126, 255) !important;
-        }
-        
-        
-
-
-        p {
-            color: rgb(0, 2, 141);
-        }
-    }
-
-    }
-
-    
-
-</style>
 
 
 
@@ -102,7 +38,7 @@
             <ul>
                 <li><a href="{{url_for('yazi_yaz')}}">Yazı Yaz</a></li>
                 <li><a href="#">Grafik Görünüm</a></li>
-                <li><a href="#">Kaydedilenler</a></li>
+                <li><a href="{{url_for('kaydedilenler')}}">Kaydedilenler</a></li>
             </ul>
 
 

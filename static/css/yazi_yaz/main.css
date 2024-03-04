@@ -1,3 +1,100 @@
 section.hero {
   margin-left: 11em;
+}
+
+.editor {
+  filter: invert(1);
+}
+
+.baslik {
+  width: 25em;
+  height: 3em;
+  border-radius: 0.5em;
+  border-color: var(--vurgu);
+  background-color: var(--koyu-gri);
+  border-style: solid;
+  color: white;
+}
+
+.gonder {
+  margin-left: 2em;
+  height: 3.5em;
+  border-radius: 0.5em;
+  border-color: var(--vurgu);
+  background-color: var(--main);
+  color: var(--vurgu);
+}
+
+.gonder:hover {
+  background-color: var(--vurgu);
+  color: var(--main);
+}
+
+.draw-border {
+  border-radius: 0.5em;
+  box-shadow: inset 0 0 0 2px var(--acik-gri);
+  color: var(--acik-gri);
+  transition: color 0.25s 0.0833333333s;
+  position: relative;
+  border-radius: 0.5em;
+}
+.draw-border::before, .draw-border::after {
+  border: 0 solid transparent;
+  box-sizing: border-box;
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 0.5em;
+}
+.draw-border::before {
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-radius: 0.5em;
+}
+.draw-border::after {
+  border-top-width: 2px;
+  border-right-width: 2px;
+  border-radius: 0.5em;
+}
+.draw-border:hover {
+  color: var(--vurgu);
+  border-radius: 0.5em;
+}
+.draw-border:hover::before, .draw-border:hover::after {
+  border-color: var(--vurgu);
+  transition: border-color 0s, width 0.25s, height 0.25s;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5em;
+}
+.draw-border:hover::before {
+  transition-delay: 0s, 0s, 0.25s;
+  border-radius: 0.5em;
+}
+.draw-border:hover::after {
+  transition-delay: 0s, 0.25s, 0s;
+  border-radius: 0.5em;
+}
+
+.btn {
+  display: inline-flex;
+  margin-bottom: -1em;
+  border-radius: 0.5em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  font: 700 1.2rem "Roboto Slab", sans-serif;
+  padding: 0.5em 1em;
+  padding-bottom: 0.7em;
+  margin-left: 3em;
+  letter-spacing: 0.05rem;
+  border-radius: 0.5em;
+}
+.btn:focus {
+  outline: 2px dotted #55d7dc;
 }/*# sourceMappingURL=main.css.map */

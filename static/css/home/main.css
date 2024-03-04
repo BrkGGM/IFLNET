@@ -21,6 +21,9 @@ section.ana .yazilar a {
   text-decoration: none;
   color: var(--acik-gri);
 }
+section.ana .yazilar p {
+  overflow: hidden;
+}
 section.ana .yazilar li:hover {
   border: 2px solid var(--vurgu);
 }

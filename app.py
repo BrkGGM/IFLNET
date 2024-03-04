@@ -38,17 +38,46 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(20), unique=True, nullable=True) 
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
+    
+    kaydedildi = db.relationship(
+        'YaziKaydet',
+        foreign_keys='YaziKaydet.user_id',
+        backref='user',lazy='dynamic'
+    )
+
+    def kaydet(self,yazi):
+        if not self.kaydetti_mi(yazi):
+            kaydet = YaziKaydet(user_id=self.id, yazi_id=yazi.id)
+            db.session.add(kaydet)
+            db.session.commit()
+        else:
+            YaziKaydet.query.filter_by(
+                user_id=self.id,
+                yazi_id=yazi.id).delete()
+            db.session.commit()
+            
+
+
+    def kaydetti_mi(self,yazi):
+        #print(YaziKaydet.query.all()[0].user_id,YaziKaydet.query.all()[0].yazi_id, self.id, yazi.id)
+        return YaziKaydet.query.filter(
+            YaziKaydet.user_id == self.id,
+            YaziKaydet.yazi_id == yazi.id).count() > 0
+
 
 class Yazilar(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     message = db.Column(db.String(10000), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     baslik = db.Column(db.String(50), nullable=False, unique=True)
+    kaydedilme_sayısı = db.relationship('YaziKaydet',backref='Yazilar',lazy='dynamic')
 
 
-
-
-
+class YaziKaydet(db.Model):
+    __tablename__ = 'yazi_kaydet'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    yazi_id = db.Column(db.Integer, db.ForeignKey('yazilar.id'))
 
 @app.before_request
 def make_session_permanent():
@@ -117,8 +146,20 @@ def yazi_yaz():
             data = request.form.get('yazi')
             baslik = request.form.get('baslik')
 
-            new_itiraf = Yazilar(message=data, user_id=current_user.id, baslik = baslik)   
-            db.session.add(new_itiraf)
+            if Yazilar.query.filter_by(baslik=baslik).first():
+                flash('Zaten böyle bir başlık var lütfen farklı bir başlık seçin!')
+                return render_template('yazi_yaz.html')
+
+            if not baslik or not data:
+                flash('Başlık ya da Metin boş olamaz!')
+                return render_template('yazi_yaz.html')
+            
+            if len(data) < 50 :
+                flash('Yazının uzunluğu 50 karakterden az olamaz!')
+                return render_template('yazi_yaz.html')
+
+            yeni_yazi = Yazilar(message=data, user_id=current_user.id, baslik = baslik)   
+            db.session.add(yeni_yazi)
             db.session.commit()
             
 
@@ -126,10 +167,31 @@ def yazi_yaz():
 
 @app.route('/yazi/<yazi_baslik>')
 def yazi(yazi_baslik):
-    yazi = Yazilar.query.get(yazi_baslik)
+    yazi = Yazilar.query.filter_by(baslik=yazi_baslik).first()
     if yazi:
-        return render_template('yazi.html', yazi =yazi)
+        return render_template('yazi.html', yazi =yazi,user=current_user)
     return redirect(url_for('home'))
+
+@app.route('/yazi/<yazi_baslik>/kaydet')
+@login_required
+def kaydet(yazi_baslik):
+    yazi = Yazilar.query.filter_by(baslik=yazi_baslik).first()
+    if yazi:
+        current_user.kaydet(yazi)
+        return redirect(f'/yazi/{yazi_baslik}')
+    return redirect(f'/yazi/{yazi_baslik}')
+
+@app.route('/kaydedilenler')
+def kaydedilenler():
+    kaydedilenler = current_user.kaydedildi.all()
+    yazilar = []
+    for kaydedilen in kaydedilenler:
+        yazilar.append(Yazilar.query.filter_by(id=kaydedilen.yazi_id).first())
+        print(kaydedilen.yazi_id)
+    
+    return render_template('kaydedilenler.html', yazilar=yazilar)
+
+
 if __name__ == "__main__":
     #from waitress import serve
     #serve(app, host="87.248.157.245", port=8080)

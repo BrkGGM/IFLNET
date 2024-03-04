@@ -1,3 +1,119 @@
 section.hero{
     margin-left: 11em;
 }
+
+.editor{
+    //display: none;
+    filter: invert(1);
+}
+
+.baslik{
+    width: 25em;
+    height: 3em;
+    border-radius: .5em;
+    border-color: var(--vurgu);
+    background-color: var(--koyu-gri);
+    border-style: solid;
+    color: white;
+}
+
+.gonder{
+    margin-left: 2em;
+    height: 3.5em;
+    border-radius: .5em;
+    border-color: var(--vurgu);
+    background-color: var(--main);
+    color: var(--vurgu);
+    
+}
+.gonder:hover{
+    background-color: var(--vurgu);
+    color: var(--main);
+    
+}
+
+//=== Drawing effect
+
+@mixin btn-border-drawing($color: #ccc, $hover: black, $width: 1px, $vertical: top, $horizontal: left, $duration: 0.25s) {
+    box-shadow: inset 0 0 0 $width $color;
+    color: $color;
+    transition: color $duration $duration/3;
+    position: relative;
+    border-radius: .5em;
+    
+    &::before,
+    &::after {
+      border: 0 solid transparent;
+      box-sizing: border-box;
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      width: 0; height: 0;
+      
+      #{$vertical}: 0; 
+      #{$horizontal}: 0;
+      border-radius: .5em;
+    }
+  
+    &::before {
+        
+      $h-side: if($horizontal == 'left', 'right', 'left');
+      
+      border-#{$vertical}-width: $width;
+      border-#{$h-side}-width: $width;
+      border-radius: .5em;
+    }
+    
+    &::after {
+      $v-side: if($vertical == 'top', 'bottom', 'top');
+      
+      border-#{$v-side}-width: $width;
+      border-#{$horizontal}-width: $width;
+      border-radius: .5em;
+    }
+    
+    &:hover {
+      color: $hover;
+      border-radius: .5em;
+      
+      
+      &::before,
+      &::after {
+        border-color: $hover;
+        transition: border-color 0s, width $duration, height $duration;
+        width: 100%;
+        height: 100%;
+        border-radius: .5em;
+      }
+      
+      &::before { transition-delay: 0s, 0s, $duration; border-radius: .5em;}
+      
+      &::after { transition-delay: 0s, $duration, 0s; border-radius: .5em;}
+    }
+  }
+  
+  .draw-border {
+    border-radius: .5em;
+    @include btn-border-drawing(var(--acik-gri), var(--vurgu), 2px, bottom, right);
+    
+  }
+  
+  //=== Button styling, semi-ignore
+  .btn {
+    display: inline-flex;
+    margin-bottom: -1em;
+    
+    border-radius: .5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    font: 700 1.2rem 'Roboto Slab', sans-serif;
+    padding: .5em 1em;
+    padding-bottom: .7em;
+    margin-left: 3em;
+    letter-spacing: 0.05rem;
+    border-radius: .5em;
+    &:focus { outline: 2px dotted #55d7dc; }
+  }
+  

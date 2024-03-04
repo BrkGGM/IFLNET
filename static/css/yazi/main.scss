@@ -1,0 +1,27 @@
+section.ana {
+    margin-left: 10em;
+    margin-top: 5em;
+    .bas{
+        display: inline-flex;
+    }
+    .yazi{
+        color: white;
+        
+        h2{
+            margin-left: 15em;
+
+        }
+        .icerik{
+            
+            p {
+                word-break: break-all;
+            }
+            img {
+                max-width: 60em;
+            }
+            margin-left: 2em;
+            width: 60em;
+        }
+    }
+}
+

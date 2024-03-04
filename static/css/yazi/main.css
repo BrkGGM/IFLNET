@@ -1,0 +1,23 @@
+section.ana {
+  margin-left: 10em;
+  margin-top: 5em;
+}
+section.ana .bas {
+  display: inline-flex;
+}
+section.ana .yazi {
+  color: white;
+}
+section.ana .yazi h2 {
+  margin-left: 15em;
+}
+section.ana .yazi .icerik {
+  margin-left: 2em;
+  width: 60em;
+}
+section.ana .yazi .icerik p {
+  word-break: break-all;
+}
+section.ana .yazi .icerik img {
+  max-width: 60em;
+}/*# sourceMappingURL=main.css.map */

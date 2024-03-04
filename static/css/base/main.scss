@@ -196,3 +196,66 @@ animation-direction:alternate;
 from{text-shadow:0px 0px 5px rgba(186,148,62,1),0px 0px 5px rgba(186,148,62,1);}
 to{text-shadow:0px 0px 20px rgba(236,172,32,1),0px 0px 20px rgba(186,148,62,1);}
 }
+
+
+::-webkit-scrollbar {
+width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #292929 ; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #ffa31a; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #b8791b; 
+}
+
+
+.popuplar {
+    .flashes {
+        margin: 5em 0 0 5em;
+    color: var(--vurgu);
+    li {
+        border: 3px solid var(--vurgu);
+        border-radius: 2em;
+        padding: 1em;
+        margin-right: 2em;
+        background-color: var(--main) !important;
+    }
+    
+    
+
+
+    p {
+        color: red;
+    }
+}
+
+.bilgi {
+    color: white;
+    li {
+        border: 3px solid rgb(21, 0, 255);
+        border-radius: 2em;
+        padding: 1em;
+        margin-right: 2em;
+        background-color: rgb(97, 126, 255) !important;
+    }
+    
+    
+
+
+    p {
+        color: rgb(0, 2, 141);
+    }
+}
+
+}
+
+    

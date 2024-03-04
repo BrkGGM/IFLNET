@@ -22,6 +22,9 @@ section.ana{
             text-decoration: none;
             color: var(--acik-gri);
         }
+        p{
+            overflow: hidden;
+        }
 
         li:hover {
             //background-color: #a1a1a1;
