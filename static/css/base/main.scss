@@ -28,10 +28,60 @@ ul {
     list-style-type: none; 
 }
 
+.navbar-top {
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    display: inline-flex;
+    //display: grid;
+    z-index: 100;
+    background-color: var(--main);
+    border-bottom: 1px solid var(--vurgu);
+    padding-left: 5em;
+    //border-left: var(--main);
+    //border-right: var(--main);
+    .logo{
+        display: inline-flex;
+        color: black;
+        margin-left: -3em;
+        width: 50px;
+        
+        img{
+            border-radius: 5em;
+            width: 50px;
+            height: 50px;
+        }
+        
+    }
+    .arama{
+        margin-top: 1em;
+        padding-bottom: 1em;
+        input.ara-bar{
+            color: white;
+            border-radius: .5em;
+            border-style: solid;
+            border-color: var(--vurgu);
+            background-color: var(--koyu-gri);
+            margin-left: 10em;
+            width: 60em;
+            //margin-top: -3em;
+            padding: .3em 0;
+        }
+    }
+    .hesabim{
+        margin-left: 10em;
+        padding-right: 2em;
+        a{
+            text-decoration: none;
+            color: var(--vurgu);
+            margin-left: -.7em;
+        }
+    }
+    
+}
 
 .navbar {
     position: fixed;
-    display:grid;
     background: var(--main);
     border-right: 1px solid var(--vurgu);
  
@@ -42,14 +92,7 @@ ul {
     nav {
         display: none;
     }
-    .logo{
-        color: white;
-        margin-left: -3em;
-        img{
-            border-radius: 5em;
-        }
-        
-    }
+    
     
     .container {
         display: flex;

@@ -39,11 +39,11 @@ section.ana .yazilar li .post-ici {
 }
 section.ana .filtre {
   position: fixed;
-  background-color: whitesmoke;
+  background-color: var(--main);
   width: 10em;
   height: 999em;
   margin-left: 61em;
-  border-left: 1px solid lightgray;
+  border-left: 1px solid var(--vurgu);
 }
 section.ana .filtre ul {
   margin-top: 2em;
@@ -54,5 +54,5 @@ section.ana .filtre ul span {
 section.ana .filtre ul li {
   margin-top: 1em;
   margin-left: -0.5em;
-  color: black;
+  color: var(--vurgu);
 }/*# sourceMappingURL=main.css.map */

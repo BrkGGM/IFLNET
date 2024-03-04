@@ -23,9 +23,53 @@ ul {
   list-style-type: none;
 }
 
+.navbar-top {
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  display: inline-flex;
+  z-index: 100;
+  background-color: var(--main);
+  border-bottom: 1px solid var(--vurgu);
+  padding-left: 5em;
+}
+.navbar-top .logo {
+  display: inline-flex;
+  color: black;
+  margin-left: -3em;
+  width: 50px;
+}
+.navbar-top .logo img {
+  border-radius: 5em;
+  width: 50px;
+  height: 50px;
+}
+.navbar-top .arama {
+  margin-top: 1em;
+  padding-bottom: 1em;
+}
+.navbar-top .arama input.ara-bar {
+  color: white;
+  border-radius: 0.5em;
+  border-style: solid;
+  border-color: var(--vurgu);
+  background-color: var(--koyu-gri);
+  margin-left: 10em;
+  width: 60em;
+  padding: 0.3em 0;
+}
+.navbar-top .hesabim {
+  margin-left: 10em;
+  padding-right: 2em;
+}
+.navbar-top .hesabim a {
+  text-decoration: none;
+  color: var(--vurgu);
+  margin-left: -0.7em;
+}
+
 .navbar {
   position: fixed;
-  display: grid;
   background: var(--main);
   border-right: 1px solid var(--vurgu);
   padding: 0 2em 0 3.7em;
@@ -34,13 +78,6 @@ ul {
 }
 .navbar nav {
   display: none;
-}
-.navbar .logo {
-  color: white;
-  margin-left: -3em;
-}
-.navbar .logo img {
-  border-radius: 5em;
 }
 .navbar .container {
   display: flex;

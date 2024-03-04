@@ -74,14 +74,30 @@
 
 </style>
 
+
+
 <body>
+
+
+    <div class="navbar-top">
+        <div class="logo">
+                
+            <a href="/"><img src="../static/images/ifl_net.jpg" alt="LOGO" width="50px"></a>
+            
+        </div>
+        <div class="arama">
+            <input type="text" class="ara-bar" placeholder="Bir yazı aratın">
+        </div>
+        <div class="hesabim">
+            <a href="#">Hesabim</a>
+
+        </div>
+    </div>
+
     <div class="navbar">
         <div class="container">
             
-            <div class="logo">
-                <a href="/"><img src="../static/images/ifl_net.jpg" alt="LOGO" width="50px"></a>
-                
-            </div>
+            
 
             <ul>
                 <li><a href="{{url_for('yazi_yaz')}}">Yazı Yaz</a></li>
@@ -92,6 +108,8 @@
 
         </div>
     </div>
+
+    
 
 
     <section class="popuplar">
