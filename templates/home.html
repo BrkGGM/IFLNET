@@ -9,7 +9,16 @@
         <div class="yazilar">
             <ul class="yazi">
                 {% for yazi in yazilar|reverse %}
-                    <li><a href="/yazi/{{yazi.baslik}}"> <div class="post-ici"><span> {{yazi.baslik}} </span><br> {{yazi.message|safe}} </div> </a></li>
+                    <a class="yazi-link" href="/yazi/{{yazi.baslik}}"> <li>
+                         <div class="post-ici">
+                            <div class="baslik-kismi">
+                                <span class="baslik-class"> {{yazi.baslik}} </span><span class="uzat"></a></span>
+                                <a href="/yazi/{{yazi.baslik}}/kaldir"><img src="../static/images/sil.svg" alt="Sil" width="20px"></a>
+                                <a class="yazi-link" href="/yazi/{{yazi.baslik}}">
+                            </div>
+                            <br> <div class="yazi-icerik">
+                                {{yazi.message|safe}}
+                            </div> </div> </li></a>
                 {% endfor %}
                 
             </ul>

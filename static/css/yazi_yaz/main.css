@@ -7,6 +7,7 @@ section.hero {
 }
 
 .baslik {
+  padding-top: 0.4em;
   width: 25em;
   height: 3em;
   border-radius: 0.5em;
@@ -28,6 +29,20 @@ section.hero {
 .gonder:hover {
   background-color: var(--vurgu);
   color: var(--main);
+}
+
+.kategori {
+  font: 700 1.2rem "Roboto Slab", sans-serif;
+  margin-left: 3em;
+  background-color: var(--main);
+  color: white;
+  border: var(--vurgu) solid 2px;
+  border-radius: 0.5em;
+  padding: 0.51em 1em;
+  padding-bottom: 0.55em;
+}
+.kategori:hover {
+  color: var(--vurgu);
 }
 
 .draw-border {
@@ -89,8 +104,7 @@ section.hero {
   cursor: pointer;
   line-height: 1;
   font: 700 1.2rem "Roboto Slab", sans-serif;
-  padding: 0.5em 1em;
-  padding-bottom: 0.7em;
+  padding: 0.6em 1em;
   margin-left: 3em;
   letter-spacing: 0.05rem;
   border-radius: 0.5em;

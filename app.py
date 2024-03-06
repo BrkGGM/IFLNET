@@ -71,6 +71,7 @@ class Yazilar(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     baslik = db.Column(db.String(50), nullable=False, unique=True)
     kaydedilme_sayısı = db.relationship('YaziKaydet',backref='Yazilar',lazy='dynamic')
+    kategori = db.Column(db.String(50),nullable=False, default="Diğer")
 
 
 class YaziKaydet(db.Model):
@@ -86,6 +87,8 @@ def make_session_permanent():
 @app.route('/')
 def home():
     if current_user.is_authenticated:
+        filter = request.args.get('filter',  type = str)
+        
         yazilar = Yazilar.query.all()
         return  render_template('home.html', yazilar = yazilar)
     else:
@@ -144,6 +147,7 @@ def yazi_yaz():
 
 
             data = request.form.get('yazi')
+            kategori = request.form.get('kategori')
             baslik = request.form.get('baslik')
 
             if Yazilar.query.filter_by(baslik=baslik).first():
@@ -158,7 +162,7 @@ def yazi_yaz():
                 flash('Yazının uzunluğu 50 karakterden az olamaz!')
                 return render_template('yazi_yaz.html')
 
-            yeni_yazi = Yazilar(message=data, user_id=current_user.id, baslik = baslik)   
+            yeni_yazi = Yazilar(message=data, user_id=current_user.id, baslik = baslik, kategori=kategori)   
             db.session.add(yeni_yazi)
             db.session.commit()
             
@@ -168,9 +172,12 @@ def yazi_yaz():
 @app.route('/yazi/<yazi_baslik>')
 def yazi(yazi_baslik):
     yazi = Yazilar.query.filter_by(baslik=yazi_baslik).first()
+    print("'"+Yazilar.query.all()[0].baslik+"'" +"'"+yazi_baslik+"'")
     if yazi:
         return render_template('yazi.html', yazi =yazi,user=current_user)
-    return redirect(url_for('home'))
+    return f"{Yazilar.query.filter_by(baslik=yazi_baslik).first()}"
+
+#sorun url'den geçerken son boşluğu siliyor bu yüzden bir tanesinde boşluk olmuyor database de bulamıyor
 
 @app.route('/yazi/<yazi_baslik>/kaydet')
 @login_required
@@ -182,6 +189,7 @@ def kaydet(yazi_baslik):
     return redirect(f'/yazi/{yazi_baslik}')
 
 @app.route('/kaydedilenler')
+@login_required
 def kaydedilenler():
     kaydedilenler = current_user.kaydedildi.all()
     yazilar = []
@@ -191,8 +199,22 @@ def kaydedilenler():
     
     return render_template('kaydedilenler.html', yazilar=yazilar)
 
+@app.route('/yazi/<yazi_baslik>/kaldir')
+@login_required
+def kaldir(yazi_baslik):
+    Yazilar.query.filter_by(baslik=yazi_baslik).delete()
+    db.session.commit()
+    return redirect('/')
+
+@app.route('/yazi/<yazi_id>/kaldir_id')
+@login_required
+def kaldir_id(yazi_id):
+    yazi = Yazilar.query.filter_by(id=yazi_id).delete()
+    db.session.commit()
+    return redirect('/')
 
 if __name__ == "__main__":
     #from waitress import serve
     #serve(app, host="87.248.157.245", port=8080)
     app.run(debug=True)
+
