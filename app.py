@@ -84,13 +84,21 @@ class YaziKaydet(db.Model):
 def make_session_permanent():
     session.permanent = True 
 
+
+
 @app.route('/')
 def home():
     if current_user.is_authenticated:
         filter = request.args.get('filter',  type = str)
         
-        yazilar = Yazilar.query.all()
-        return  render_template('home.html', yazilar = yazilar)
+        if filter:
+            yazilar = Yazilar.query.filter(Yazilar.kategori == filter)
+            
+            if  yazilar.count() < 1:
+                yazilar = None
+        else:
+            yazilar = Yazilar.query.all()
+        return  render_template('home.html', yazilar = yazilar, c_user = current_user, filtre=filter,kategoriler = ["diğer", "siyaset", "spor", "kişisel-gelişim", "teknoloji"])
     else:
         return "Lütfen giriş yapın"
 
@@ -150,14 +158,24 @@ def yazi_yaz():
             kategori = request.form.get('kategori')
             baslik = request.form.get('baslik')
 
+            baslik = baslik.rstrip()
+            baslik = baslik.lstrip()
+
+            data = data.lstrip()
+            data = data.rstrip()
+
+            data = data.partition('>')[0] + data.partition('>')[-1].lstrip()
+
             if Yazilar.query.filter_by(baslik=baslik).first():
                 flash('Zaten böyle bir başlık var lütfen farklı bir başlık seçin!')
                 return render_template('yazi_yaz.html')
 
+
             if not baslik or not data:
                 flash('Başlık ya da Metin boş olamaz!')
                 return render_template('yazi_yaz.html')
-            
+
+
             if len(data) < 50 :
                 flash('Yazının uzunluğu 50 karakterden az olamaz!')
                 return render_template('yazi_yaz.html')
@@ -171,11 +189,14 @@ def yazi_yaz():
 
 @app.route('/yazi/<yazi_baslik>')
 def yazi(yazi_baslik):
+
     yazi = Yazilar.query.filter_by(baslik=yazi_baslik).first()
+    
+    
     print("'"+Yazilar.query.all()[0].baslik+"'" +"'"+yazi_baslik+"'")
     if yazi:
         return render_template('yazi.html', yazi =yazi,user=current_user)
-    return f"{Yazilar.query.filter_by(baslik=yazi_baslik).first()}"
+    return redirect(url_for('home'))
 
 #sorun url'den geçerken son boşluğu siliyor bu yüzden bir tanesinde boşluk olmuyor database de bulamıyor
 
@@ -202,8 +223,10 @@ def kaydedilenler():
 @app.route('/yazi/<yazi_baslik>/kaldir')
 @login_required
 def kaldir(yazi_baslik):
-    Yazilar.query.filter_by(baslik=yazi_baslik).delete()
-    db.session.commit()
+    yazi = Yazilar.query.filter(Yazilar.baslik == yazi_baslik)[0]
+    if current_user.id == yazi.user_id:
+        Yazilar.query.filter_by(baslik=yazi_baslik).delete()
+        db.session.commit()
     return redirect('/')
 
 @app.route('/yazi/<yazi_id>/kaldir_id')
@@ -216,5 +239,5 @@ def kaldir_id(yazi_id):
 if __name__ == "__main__":
     #from waitress import serve
     #serve(app, host="87.248.157.245", port=8080)
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
 

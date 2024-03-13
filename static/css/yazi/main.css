@@ -4,12 +4,14 @@ section.ana {
 }
 section.ana .bas {
   display: inline-flex;
+  margin-left: 1.1em;
 }
 section.ana .yazi {
   color: white;
 }
 section.ana .yazi h2 {
   margin-left: 15em;
+  margin-top: -0.5mm;
 }
 section.ana .yazi .icerik {
   margin-left: 2em;
@@ -20,4 +22,59 @@ section.ana .yazi .icerik p {
 }
 section.ana .yazi .icerik img {
   max-width: 60em;
+}
+
+.tag {
+  display: inline-block;
+  width: auto;
+  height: 38px;
+  background-color: black;
+  border-radius: 3px 4px 4px 3px;
+  border-left: 1px solid var(--vurgu);
+  /* This makes room for the triangle */
+  margin-left: 19px;
+  position: relative;
+  color: var(--vurgu);
+  font-weight: 300;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 22px;
+  line-height: 38px;
+  padding: 0 10px 0 10px;
+  outline: 1px solid var(--vurgu);
+}
+.tag p {
+  display: inline;
+  font-family: "Georgia", serif;
+  text-transform: uppercase;
+}
+
+/* Makes the triangle */
+.tag-div {
+  padding-left: 23em;
+  transform: scale(0.7);
+}
+
+.tag:before {
+  content: "";
+  position: absolute;
+  display: block;
+  left: -19px;
+  width: 0;
+  height: 0;
+  border-top: 19px solid transparent;
+  border-bottom: 19px solid transparent;
+  border-right: 19px solid var(--vurgu);
+}
+
+/* Makes the circle */
+.tag:after {
+  content: "";
+  background-color: var(--main);
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  display: block;
+  position: absolute;
+  left: -9px;
+  top: 17px;
 }/*# sourceMappingURL=main.css.map */

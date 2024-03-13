@@ -209,12 +209,12 @@ background: #292929 ;
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-background: #ffa31a; 
+background: var(--vurgu); 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-background: #b8791b; 
+    background: darkcyan; 
 }
 
 

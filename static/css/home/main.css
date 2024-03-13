@@ -1,6 +1,7 @@
 section.ana {
   margin-left: 10em;
   display: inline-flex;
+  color: white;
 }
 section.ana .yazilar {
   margin: 1em 0.5em 0 0.5em;
@@ -61,7 +62,26 @@ section.ana .yazilar li .baslik-kismi img {
   right: 3em;
   margin-bottom: 0;
 }
-section.ana .filtre {
+section.ana .bulunamadi h3 {
+  padding-left: 3em;
+  padding-bottom: 0;
+}
+section.ana .bulunamadi img {
+  animation: donme 5s linear infinite;
+}
+@keyframes donme {
+  0% {
+    transform: matrix(1, 0, 0, 1, 0, 20);
+  }
+  50% {
+    transform: matrix(-0.9312347478, -0.8179398809, -0.7424516642, -0.8589536977, -0.630527673, -0.7527452935);
+  }
+  100% {
+    transform: matrix(1, 0, 0, 1, 0, 20);
+  }
+}
+
+.filtre {
   position: fixed;
   background-color: var(--main);
   width: 10em;
@@ -69,14 +89,36 @@ section.ana .filtre {
   margin-left: 61em;
   border-left: 1px solid var(--vurgu);
 }
-section.ana .filtre ul {
+.filtre .label-bas {
+  margin-left: -0.5em;
+}
+.filtre .label-bas a {
+  color: red;
+  text-decoration: none;
+}
+.filtre .label-bas a:visited {
+  color: red;
+  text-decoration: none;
+}
+.filtre ul {
   margin-top: 2em;
+  text-transform: capitalize;
 }
-section.ana .filtre ul span {
+.filtre ul span {
   paddings-bottom: 2em;
+  padding-left: -0.1em;
 }
-section.ana .filtre ul li {
+.filtre ul li {
   margin-top: 1em;
   margin-left: -0.5em;
+  color: var(--vurgu);
+}
+.filtre ul li a {
+  text-decoration: none;
+}
+.filtre ul li a:visited {
+  color: var(--vurgu);
+}
+.filtre ul li a:hover {
   color: var(--vurgu);
 }/*# sourceMappingURL=main.css.map */

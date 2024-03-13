@@ -189,12 +189,12 @@ nav li a:hover {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ffa31a;
+  background: var(--vurgu);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #b8791b;
+  background: darkcyan;
 }
 
 .popuplar .flashes {

@@ -8,18 +8,32 @@
     <section class="ana">
         <div class="yazilar">
             <ul class="yazi">
-                {% for yazi in yazilar|reverse %}
-                    <a class="yazi-link" href="/yazi/{{yazi.baslik}}"> <li>
-                         <div class="post-ici">
-                            <div class="baslik-kismi">
-                                <span class="baslik-class"> {{yazi.baslik}} </span><span class="uzat"></a></span>
-                                <a href="/yazi/{{yazi.baslik}}/kaldir"><img src="../static/images/sil.svg" alt="Sil" width="20px"></a>
-                                <a class="yazi-link" href="/yazi/{{yazi.baslik}}">
-                            </div>
-                            <br> <div class="yazi-icerik">
-                                {{yazi.message|safe}}
-                            </div> </div> </li></a>
-                {% endfor %}
+                {% if yazilar %}
+                    {% for yazi in yazilar|reverse %}
+                        <a class="yazi-link" href="/yazi/{{yazi.baslik}}"> <li>
+                            
+                            <div class="post-ici">
+                                <div class="baslik-kismi">
+                                    <span class="baslik-class"> {{yazi.baslik}} </span><span class="uzat"></a></span>
+                                    {% if c_user.id == yazi.user_id %}
+                                    <a href="/yazi/{{yazi.baslik}}/kaldir"><img src="../static/images/sil.svg" alt="Sil" width="20px"></a>                                       
+                                    {% endif %}
+                                    
+                                    <a class="yazi-link" href="/yazi/{{yazi.baslik}}">
+                                </div>
+                                <br> <div class="yazi-icerik">
+                                    {{yazi.message|safe}}
+                                </div> </div> </li></a>
+                    {% endfor %}
+                
+                {% else %}
+                    <div class="bulunamadi">
+                        <h3>Hiçbir yazı bulunamadı.</h3> <img src="../static/images/sad-doge.png" alt="sad doge" width="400px">
+                    </div>
+                    
+
+                {% endif %}
+                
                 
             </ul>
         </div>
@@ -27,18 +41,29 @@
         
 
 
-        <div class="filtre">
+        <div class="filtre" id="filtre">
             <ul>
-                <span><b>Filtrele</b></span>
+                <div class="label-bas">
+                    {% if filtre %}
+                    <a href="/"><span class="aktif-label">Filtreleri <br>Kaldır</span></a>
+                    {% else %}
+                    <span class="deaktif-label"><b>Filtrele</b></span>
+                    {% endif %}
+                </div>
+               
                 
-                <li>Teknoloji</li>
-                <li>Kişisel <br> 
-                    Gelişim</li>
-                <li>Spor</li>
-                <li>Gündem</li>
-                <li>Siyaset</li>
+
+                {% for kategori in kategoriler %}
+                    {% if filter == kategori %}
+                        <li class="aktif"><a href="/">{{kategori}} <span class="x">✓</span></a></li>
+                    {% else %}
+                        <li><a href="http://127.0.0.1:5000/?filter={{kategori}}">{{kategori}}</a></li>
+                    {% endif %}
+                {% endfor %}
             </ul>
+            
         </div>
     </section>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../static/js/home/scripts.js"></script>
 {% endblock %}
