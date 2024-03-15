@@ -74,11 +74,26 @@ section.ana .bulunamadi img {
     transform: matrix(1, 0, 0, 1, 0, 20);
   }
   50% {
-    transform: matrix(-0.9312347478, -0.8179398809, -0.7424516642, -0.8589536977, -0.630527673, -0.7527452935);
+    transform: matrix(-0.8529776385, -0.9995538225, -0.3417394345, -0.4940327292, -0.8114490873, -0.4748629925);
   }
   100% {
     transform: matrix(1, 0, 0, 1, 0, 20);
   }
+}
+
+.aratma {
+  width: 60em;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  height: 5em;
+  border-radius: 0.5em;
+  margin-left: -2em;
+  margin: -2em;
+  word-break: break-all;
+}
+.aratma span {
+  color: white;
+  padding-left: 0.2em;
 }
 
 .filtre {
@@ -116,9 +131,6 @@ section.ana .bulunamadi img {
 .filtre ul li a {
   text-decoration: none;
 }
-.filtre ul li a:visited {
-  color: var(--vurgu);
-}
-.filtre ul li a:hover {
+.filtre ul li a {
   color: var(--vurgu);
 }/*# sourceMappingURL=main.css.map */

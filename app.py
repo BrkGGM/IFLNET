@@ -86,19 +86,32 @@ def make_session_permanent():
 
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
     if current_user.is_authenticated:
         filter = request.args.get('filter',  type = str)
-        
-        if filter:
-            yazilar = Yazilar.query.filter(Yazilar.kategori == filter)
-            
-            if  yazilar.count() < 1:
-                yazilar = None
+        arama = False
+        arama_bulunan = 0
+        aranan = " "
+        if request.method == 'POST':
+            yazilar = Yazilar.query.filter(Yazilar.baslik.contains(request.form.get('arama'))).all()
+            if not yazilar:
+                yazilar = Yazilar.query.filter(Yazilar.message.contains(request.form.get('arama'))).all()
+            arama = True
+            if yazilar:
+                arama_bulunan = len(yazilar)
+            print('arama bulunan => ' + str(arama_bulunan))
+            aranan = request.form.get('arama')
         else:
-            yazilar = Yazilar.query.all()
-        return  render_template('home.html', yazilar = yazilar, c_user = current_user, filtre=filter,kategoriler = ["diğer", "siyaset", "spor", "kişisel-gelişim", "teknoloji"])
+
+            if filter:
+                yazilar = Yazilar.query.filter(Yazilar.kategori == filter)
+                
+                if  yazilar.count() < 1:
+                    yazilar = None
+            else:
+                yazilar = Yazilar.query.all()
+        return  render_template('home.html', yazilar = yazilar, c_user = current_user, filtre=filter,kategoriler = ["diğer", "siyaset", "spor", "kişisel-gelişim", "teknoloji"], arama=arama, arama_bulunan=arama_bulunan, aranan=aranan)
     else:
         return "Lütfen giriş yapın"
 
@@ -192,10 +205,10 @@ def yazi(yazi_baslik):
 
     yazi = Yazilar.query.filter_by(baslik=yazi_baslik).first()
     
-    
+    yazar = User.query.filter_by(id=yazi.user_id).first()
     print("'"+Yazilar.query.all()[0].baslik+"'" +"'"+yazi_baslik+"'")
     if yazi:
-        return render_template('yazi.html', yazi =yazi,user=current_user)
+        return render_template('yazi.html', yazi =yazi,user=current_user, yazar = yazar.username)
     return redirect(url_for('home'))
 
 #sorun url'den geçerken son boşluğu siliyor bu yüzden bir tanesinde boşluk olmuyor database de bulamıyor
@@ -235,7 +248,16 @@ def kaldir_id(yazi_id):
     yazi = Yazilar.query.filter_by(id=yazi_id).delete()
     db.session.commit()
     return redirect('/')
-
+"""
+@app.route('/ara', methods=['GET', 'POST'] )
+def ara():
+    if request.method == 'POST':
+        yazilar = Yazilar.query.filter(Yazilar.baslik.contains(request.form.get('arama'))).all()
+        if not yazilar:
+            yazilar = Yazilar.query.filter(Yazilar.message.contains(request.form.get('arama'))).all()
+        return render_template('home.html', yazilar = yazilar, c_user = current_user, kategoriler = ["diğer", "siyaset", "spor", "kişisel-gelişim", "teknoloji"])
+    return redirect('/')
+"""
 if __name__ == "__main__":
     #from waitress import serve
     #serve(app, host="87.248.157.245", port=8080)

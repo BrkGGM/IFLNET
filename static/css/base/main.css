@@ -48,6 +48,28 @@ ul {
   margin-top: 1em;
   padding-bottom: 1em;
 }
+.navbar-top .arama button.ara-btn {
+  position: absolute;
+  border-color: var(--vurgu);
+  border-radius: 0.5em;
+  border-style: solid;
+  background-color: var(--main);
+  width: 30px;
+  margin-bottom: -0.3em;
+  margin-left: 0.5em;
+}
+.navbar-top .arama button.ara-btn img {
+  filter: invert(100%) sepia(54%) saturate(4364%) hue-rotate(101deg) brightness(107%) contrast(101%);
+}
+.navbar-top .arama button.ara-btn img:hover {
+  cursor: pointer;
+}
+.navbar-top .arama button.ara-btn:hover {
+  background-color: var(--vurgu);
+}
+.navbar-top .arama button.ara-btn:hover img {
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(317deg) brightness(98%) contrast(102%);
+}
 .navbar-top .arama input.ara-bar {
   color: white;
   border-radius: 0.5em;

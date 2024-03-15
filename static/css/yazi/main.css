@@ -23,6 +23,11 @@ section.ana .yazi .icerik p {
 section.ana .yazi .icerik img {
   max-width: 60em;
 }
+section.ana .yazar {
+  margin-left: 2em;
+  color: var(--vurgu);
+  text-transform: uppercase;
+}
 
 .tag {
   display: inline-block;

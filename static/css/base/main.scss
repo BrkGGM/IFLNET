@@ -56,6 +56,31 @@ ul {
     .arama{
         margin-top: 1em;
         padding-bottom: 1em;
+        button.ara-btn{
+            position: absolute;
+            border-color: var(--vurgu);
+            border-radius: .5em;
+            border-style: solid;
+            background-color: var(--main);
+            width: 30px;
+            margin-bottom: -.3em;
+            margin-left: .5em;
+            img{
+                filter: invert(100%) sepia(54%) saturate(4364%) hue-rotate(101deg) brightness(107%) contrast(101%);
+            }
+            img:hover{
+                cursor: pointer;
+            }
+            
+        }
+        button.ara-btn:hover{
+            background-color: var(--vurgu);
+            img{
+                filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(317deg) brightness(98%) contrast(102%);
+            }
+            
+        }
+
         input.ara-bar{
             color: white;
             border-radius: .5em;

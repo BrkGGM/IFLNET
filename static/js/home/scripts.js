@@ -1,10 +1,12 @@
 $(document).ready(function(){
-    var liElements = document.getElementById("filtre").getElementsByTagName("a");
+    var aElements = document.getElementById("filtre").getElementsByTagName("a");
 
-    for (var a of liElements) {
+    for (var a of aElements) {
     var textContent = a.textContent;
-    var newTextContent = textContent.replace("-", " ");
+    var newTextContent = textContent.replace("-", " ")
+    
     a.textContent = newTextContent;
     }
+
 
 });

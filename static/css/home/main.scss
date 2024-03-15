@@ -101,7 +101,25 @@ section.ana{
         }
         color: white;
     }
+    .aratma{
+        width: 60em;
+        
+        hyphens: auto;
+        
+        height: 5em;
+        border-radius: .5em;
+        margin-left: -2em;
+        margin: -2em ;
+        word-break: break-all;
+        span {
+            color: white;
+            padding-left: .2em;
+        }
+    }
+
+
     .filtre{
+        
         .label-bas {
             a {
                 color: red;
@@ -121,6 +139,8 @@ section.ana{
         margin-left: 61em;
         border-left: 1px solid var(--vurgu);
         
+        
+
         ul{
             
             margin-top: 2em;
@@ -133,10 +153,8 @@ section.ana{
                 a {
                     text-decoration: none;
                 }
-                a:visited {
-                    color: var(--vurgu);
-                }
-                a:hover {
+                
+                a {
                     color: var(--vurgu);
                 }
                 margin-top: 1em;

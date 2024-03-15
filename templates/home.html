@@ -8,6 +8,11 @@
     <section class="ana">
         <div class="yazilar">
             <ul class="yazi">
+                {% if arama %}
+            <div class="aratma">
+                <span class="ara-sonucu"> '{{aranan}}' araması üzerine {{arama_bulunan}} adet sonuç bulunmuştur. </span>
+            </div>
+            {% endif %}
                 {% if yazilar %}
                     {% for yazi in yazilar|reverse %}
                         <a class="yazi-link" href="/yazi/{{yazi.baslik}}"> <li>
@@ -40,7 +45,8 @@
 
         
 
-
+        
+        {% if not arama %}
         <div class="filtre" id="filtre">
             <ul>
                 <div class="label-bas">
@@ -54,15 +60,20 @@
                 
 
                 {% for kategori in kategoriler %}
-                    {% if filter == kategori %}
-                        <li class="aktif"><a href="/">{{kategori}} <span class="x">✓</span></a></li>
+                    {% if filtre == kategori %}
+
+                        <li class="aktif" ><a href="/" name="aktif"> {{kategori}} ✓</a></li>
                     {% else %}
+
                         <li><a href="http://127.0.0.1:5000/?filter={{kategori}}">{{kategori}}</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
-            
         </div>
+        {% endif %}
+        
+
+
     </section>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../static/js/home/scripts.js"></script>
