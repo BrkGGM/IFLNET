@@ -33,7 +33,7 @@
             
         </div>
         <div class="hesabim">
-            <a href="#">Hesabim</a>
+            <a href="#" onclick="toggleBlurEffect()" >Hesabim</a>
         </div>
     </div>
 
@@ -89,5 +89,38 @@
     
 
     {% block scripts %} {% endblock %}
+
+
+
+    <div class="hesabim-ayarlar " id="ayarlar">
+        <div class="secenekler">
+            <ul>
+                <li> <div class="aktif" id="bil"><a  onclick="hes_gecis_yap();">Hesap <br>Bilgileri</a></div> </li>
+                <li> <div  id="deg"><a onclick="deg_gecis_yap();">Bilgileri <br>Değiştir</a></div></li>
+                
+            </ul>
+        </div>
+        <div class="hesabim-icerik" id="icerik1">
+            <div class="hesap-pp">
+                <span class="yazi" > {{c_user.username[0]}} </span>
+            </div>
+            <div class="hesap-bilgi">
+                <span class="duz">Kullanıcı Adı : </span> <span class="degisken">{{c_user.username}} </span>
+                <br>
+                <span class="duz">Email Adresi : </span> <span class="degisken"> {% if c_user.email %}
+                    {{c_user.email}} {% else %} Kayıtlı Mail Yok!
+                {% endif %}  </span>
+            </div>
+            <div class="hesabim-icerik2" id="icerik2">
+                <form action="#">
+                    <!--Yarın buradan devam ediceksin şifre kullanıcı adı eposta değiştrime vb.-->
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../static/js/base/scripts.js"></script>
 </body>
 </html>

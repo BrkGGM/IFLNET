@@ -8,5 +8,7 @@ $(document).ready(function(){
     a.textContent = newTextContent;
     }
 
+    // JavaScript to toggle blur effect
+
 
 });
