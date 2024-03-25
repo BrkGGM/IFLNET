@@ -7,6 +7,11 @@ section.ana .yazilar {
   margin: 1em 0.5em 0 0.5em;
   width: 60em;
 }
+section.ana .yazilar .yazi a.kaldir-btn {
+  right: 3em;
+  margin-top: -6.5em;
+  position: absolute;
+}
 section.ana .yazilar .yazi-link {
   z-index: 5;
 }
@@ -74,7 +79,7 @@ section.ana .bulunamadi img {
     transform: matrix(1, 0, 0, 1, 0, 20);
   }
   50% {
-    transform: matrix(-0.1230831651, -0.9801305329, -0.9880160068, -0.9455147832, -0.6207926435, -0.8869920981);
+    transform: matrix(-0.8973109278, -0.3184125325, -0.6664801727, -0.8485658914, -0.8061761344, -0.9158452932);
   }
   100% {
     transform: matrix(1, 0, 0, 1, 0, 20);
@@ -99,10 +104,17 @@ section.ana .bulunamadi img {
 .filtre {
   position: fixed;
   background-color: var(--main);
-  width: 10em;
-  height: 999em;
+  width: 8em;
+  height: 20em;
   margin-left: 61em;
-  border-left: 1px solid var(--vurgu);
+  border-left: 2px solid var(--vurgu);
+  -o-border-image: radial-gradient(var(--vurgu), black 75%) 30;
+     border-image: radial-gradient(var(--vurgu), black 75%) 30;
+  border-width: 3px;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
+  border-style: solid;
 }
 .filtre .label-bas {
   margin-left: -0.5em;
@@ -133,4 +145,43 @@ section.ana .bulunamadi img {
 }
 .filtre ul li a {
   color: var(--vurgu);
+}
+.filtre ul li:hover {
+  scale: 1.2;
+}
+
+@media screen and (max-width: 480px) {
+  section.ana {
+    margin: 0;
+    background-color: var(--koyu-gri);
+    width: 100%;
+  }
+  section.ana .filtre {
+    display: none;
+  }
+  section.ana .yazilar {
+    width: 100%;
+    margin: 0em;
+  }
+  section.ana .yazilar ul {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 5em;
+    margin-left: -1em;
+  }
+  section.ana .yazilar li {
+    display: block;
+    max-width: 100%;
+    border-top: none;
+    border-bottom: 1px solid var(--vurgu);
+    border-right: none;
+    border-left: none;
+    border-radius: 0;
+    width: 100%;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  section.ana .yazilar li .post-ici {
+    margin: 0 1em;
+  }
 }/*# sourceMappingURL=main.css.map */

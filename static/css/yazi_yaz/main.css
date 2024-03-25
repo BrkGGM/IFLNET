@@ -1,5 +1,5 @@
 section.hero {
-  margin-left: 11em;
+  margin-left: 13em;
 }
 
 .editor {
@@ -43,6 +43,11 @@ section.hero {
 }
 .kategori:hover {
   color: var(--vurgu);
+}
+
+span {
+  color: var(--vurgu);
+  margin-right: 3em;
 }
 
 .draw-border {

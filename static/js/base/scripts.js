@@ -17,12 +17,20 @@ function hes_gecis_yap(){
     document.getElementById("bil").className = ('aktif');
     document.getElementById("deg").classList.remove('aktif');
     const icerik1 = document.getElementById("icerik1")
+    const icerik2 = document.getElementById("icerik2")
     icerik1.style.display = 'block';    
+    icerik2.style.display = 'none';
 }
 
 function deg_gecis_yap(){
     document.getElementById("deg").className = ('aktif');
     document.getElementById("bil").classList.remove('aktif');
     const icerik1 = document.getElementById("icerik1")
+    const icerik2 = document.getElementById("icerik2")
     icerik1.style.display = 'none';
+    icerik2.style.display = 'block'; 
 }
+
+$("#bas").click(function() {
+    window.location.href = 'http://www.google.co.uk'
+  });

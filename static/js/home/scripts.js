@@ -1,14 +1,14 @@
-$(document).ready(function(){
-    var aElements = document.getElementById("filtre").getElementsByTagName("a");
+var aElements = document.getElementById("filtre").getElementsByTagName("a");
 
-    for (var a of aElements) {
-    var textContent = a.textContent;
-    var newTextContent = textContent.replace("-", " ")
-    
-    a.textContent = newTextContent;
-    }
+for (var a of aElements) {
+var textContent = a.textContent;
+var newTextContent = textContent.replaceAll("-", " ")
 
-    // JavaScript to toggle blur effect
+a.textContent = newTextContent;
+}
+
+console.log('aabb')
+// JavaScript to toggle blur effect
 
 
-});
+

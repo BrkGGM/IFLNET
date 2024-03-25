@@ -1,5 +1,5 @@
 section.hero{
-    margin-left: 11em;
+    margin-left: 13em;
 }
 
 .editor{
@@ -47,6 +47,10 @@ section.hero{
     }
 }
 //=== Drawing effect
+span{
+  color: var(--vurgu);
+  margin-right: 3em;
+}
 
 @mixin btn-border-drawing($color: #ccc, $hover: black, $width: 1px, $vertical: top, $horizontal: left, $duration: 0.25s) {
     box-shadow: inset 0 0 0 $width $color;

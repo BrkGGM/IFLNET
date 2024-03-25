@@ -1,0 +1,55 @@
+:root {
+  --main: #000000;
+  --vurgu:	#00FFFF;
+  --koyu-gri: #333333;
+  --acik-gri: #CCCCCC;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  color: var(--vurgu);
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  color: var(--vurgu);
+}
+
+select {
+  padding: 8px;
+  border: 2px solid var(--vurgu);
+  border-radius: 3em;
+  background-color: black;
+  color: var(--vurgu);
+}
+
+button {
+  padding: 8px 16px;
+  cursor: pointer;
+  border: 2px solid var(--vurgu);
+  border-radius: 3em;
+  background-color: black;
+  color: var(--vurgu);
+}
+
+button:hover {
+  background-color: var(--vurgu);
+  color: black;
+}/*# sourceMappingURL=main.css.map */

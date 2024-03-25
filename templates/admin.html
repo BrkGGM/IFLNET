@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <!-- Bu kısmı düzenleerek kendi CSS dosyanızı ekleyebilirsiniz -->
+    <link rel="stylesheet" href="../static/css/admin/main.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <form method="post">
+            <label for="admin_option">Seçenek:</label>
+            <select name="admin_option" id="admin_option">
+                <option value="yazilar">Yazı Yönetimi</option>
+                <option value="kullanici">Kullanıcı Yönetimi</option>
+                <option value="banlist">Ban Listesi</option>
+                <option value="anket">Anket Yönetimi</option>
+            </select>
+            <button type="submit">Git</button>
+        </form>
+    </div>
+</body>
+
+</html>

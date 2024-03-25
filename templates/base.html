@@ -8,7 +8,8 @@
     <script language="JavaScript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/js/sprinkle.js"></script>
     <script language="JavaScript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/js/jquery-1.2.6.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/js/jquery-ui-personalized-1.5.2.packed.js"></script>
-
+    <link href="https://fonts.cdnfonts.com/css/ozda" rel="stylesheet">
+                
 </head>
 {% block style %}
 {% endblock %}
@@ -17,12 +18,13 @@
 
 
 <body>
-
+    
 
     <div class="navbar-top">
         <div class="logo">
-                
-            <a href="/"><img src="../static/images/ifl_net.jpg" alt="LOGO" width="50px"></a>
+            
+            <a href="/"><span>IFLNET </span></a>
+            <!--<a href="/"><img src="../static/images/ifl_net.jpg" alt="LOGO" width="50px"></a>-->
             
         </div>
         <div class="arama">
@@ -33,7 +35,11 @@
             
         </div>
         <div class="hesabim">
-            <a href="#" onclick="toggleBlurEffect()" >Hesabim</a>
+            <div class="hesabim-ici">
+                <a href="#"  onclick="toggleBlurEffect()" ><span  > {{c_user.username[0]}} </span></a>
+
+            </div>
+                    
         </div>
     </div>
 
@@ -43,14 +49,37 @@
             
 
             <ul>
-                <li><a href="{{url_for('yazi_yaz')}}">Yazı Paylaş</a></li>
-                <li><a href="#">Grafik Görünüm</a></li>
-                <li><a href="{{url_for('kaydedilenler')}}">Kaydedilenler</a></li>
-            </ul>
+                <div class="konteynir">
+                    <li>
+                        <a class="li1" href="{{url_for('yazi_yaz')}}"><img  id="bas" src="../static/images/yaz.svg" width="40px" alt=""></a>
+                        <div  class="li1 gizle" >   <a class="elemani" href="{{url_for('yazi_yaz')}}">Yazı Paylaş</a></div></li>
+    
+                </div>
+                                
+                    
+                <li>
+                    <a class="li2" href="{{url_for('random')}}"><img  src="../static/images/zar.svg" width="40px" alt=""></a>
+                    <div  class="li2 gizle" ><a href="{{url_for('random')}}">  Rastgele Yazı</a></div> </li>
+                <div class="konteynir"><li>
+                    <a class="li3" href="{{url_for('kaydedilenler')}}"><img  src="../static/images/kaydedilenler.svg" width="40px" alt=""></a>
+                    <div  class="li3 gizle" > <a href="{{url_for('kaydedilenler')}}"> Kaydedilenler </a></div></li>
+                    </div>
+                
+            {% if c_user.username in adminler %}
+            <li>
+                <a class="li4" href="{{url_for('admin_panel')}}"><img  src="../static/images/admin.svg" width="40px" alt=""></a>
+                <div  class="li4 gizle" ><a href="{{url_for('admin_panel')}}"> Admin Panel</a></div> </li>
+            <div class="konteynir"><li>
+            {% endif %}
 
+                </ul>
+                
 
         </div>
     </div>
+
+    
+
 
     
 
@@ -93,6 +122,7 @@
 
 
     <div class="hesabim-ayarlar " id="ayarlar">
+        <a class="kapat-anchor" onclick="toggleBlurEffect();"><img src="../static/images/kapat.svg" alt="X" width="40px"></a>
         <div class="secenekler">
             <ul>
                 <li> <div class="aktif" id="bil"><a  onclick="hes_gecis_yap();">Hesap <br>Bilgileri</a></div> </li>
@@ -111,14 +141,38 @@
                     {{c_user.email}} {% else %} Kayıtlı Mail Yok!
                 {% endif %}  </span>
             </div>
-            <div class="hesabim-icerik2" id="icerik2">
-                <form action="#">
-                    <!--Yarın buradan devam ediceksin şifre kullanıcı adı eposta değiştrime vb.-->
-                </form>
-            </div>
+            
         </div>
-        
+        <div class="hesabim-icerik2" id="icerik2">
+            <form action="#">
+                <div class="hesap-pp">
+                    <img src="../static/images/duzelt.svg" alt="Hesap Bilgilerini Düzenle" width="130px">
+                </div>
+                <input class="metin-gir" type="text" value="{{ c_user.username }}" placeholder="Yeni Kullanıcı Adı Giriniz">
+                <input class="metin-gir" type="password" placeholder="Şuanki Şifreniz">
+                <input class="yolla" type="submit" value="Değiştir">
+            </form>
+        </div>
     </div>
+
+
+    <div class="m-navbar">
+
+        <ul>
+            <li><img src="../static/images/ev.svg" alt="Ana" ></li>
+            <li><img class="m-arama-btn" src="../static/images/arama.svg" alt="Ara"></li>
+            <li><img class="m-yaz-btn" src="../static/images/yaz.svg" alt="Yaz" ></li>
+            <li><img class="m-def-btn"src="../static/images/kaydedilenler.svg" alt="Ana" ></li>
+            <li><div class="m-hesabim">
+                <div class="hesabim-ici">
+                    <a href="#"  onclick="toggleBlurEffect()" ><span  > {{c_user.username[0]}} </span></a>
+    
+                </div>
+            </div></li>
+        </ul>
+        
+</div>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../static/js/base/scripts.js"></script>

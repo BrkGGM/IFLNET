@@ -15,20 +15,25 @@
             {% endif %}
                 {% if yazilar %}
                     {% for yazi in yazilar|reverse %}
+                    <div class="yazi">
                         <a class="yazi-link" href="/yazi/{{yazi.baslik}}"> <li>
                             
                             <div class="post-ici">
                                 <div class="baslik-kismi">
-                                    <span class="baslik-class"> {{yazi.baslik}} </span><span class="uzat"></a></span>
-                                    {% if c_user.id == yazi.user_id %}
-                                    <a href="/yazi/{{yazi.baslik}}/kaldir"><img src="../static/images/sil.svg" alt="Sil" width="20px"></a>                                       
-                                    {% endif %}
+                                    <span class="baslik-class"> {{yazi.baslik}} {% if c_user.username == 'qwerty' %}
+                                        {{yazi.id}}
+                                    {% endif %} </span> <span class="uzat"></span>
                                     
-                                    <a class="yazi-link" href="/yazi/{{yazi.baslik}}">
+                                    
+                                    
                                 </div>
                                 <br> <div class="yazi-icerik">
                                     {{yazi.message|safe}}
                                 </div> </div> </li></a>
+                                {% if c_user.id == yazi.user_id %}
+                                    <a class="kaldir-btn" href="/yazi/{{yazi.baslik}}/kaldir"><img src="../static/images/sil.svg" alt="Sil" width="20px"></a>                                       
+                                {% endif %}
+                            </div>
                     {% endfor %}
                 
                 {% else %}

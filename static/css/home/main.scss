@@ -5,6 +5,13 @@ section.ana{
     //BU CSS KODU HAYATINIZDA GÖRÜP GÖREBİLECEĞİNİZ 
     //EN KARMAŞIK VE KOMPLİKE CSS KODUDUR ÖRNEK ALMAYIN
     .yazilar {
+        .yazi{
+        a.kaldir-btn{
+            right: 3em;
+            margin-top: -6.5em;
+            position: absolute;
+        }
+    }
         .yazi-link {
             z-index: 5;
         }
@@ -125,6 +132,7 @@ section.ana{
                 color: red;
                 text-decoration: none;
             }
+            
             a:visited {
                 color: red;
                 text-decoration: none;
@@ -134,10 +142,17 @@ section.ana{
         
         position: fixed;
         background-color: var(--main);
-        width: 10em;
-        height: 999em;
+        width: 8em;
+        height: 20em;
         margin-left: 61em;
-        border-left: 1px solid var(--vurgu);
+        border-left: 2px solid var(--vurgu);
+        border-image: radial-gradient(var(--vurgu), black 75%) 30;
+        border-width: 3px;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 0;
+        border-style: solid;
+        
         
         
 
@@ -150,6 +165,7 @@ section.ana{
                 padding-left: -.1em;
             }
             li{
+                
                 a {
                     text-decoration: none;
                 }
@@ -157,11 +173,59 @@ section.ana{
                 a {
                     color: var(--vurgu);
                 }
+                
                 margin-top: 1em;
                 margin-left: -.5em;
                 color: var(--vurgu);
             }
+            li:hover{
+                scale: 1.2;
+            }
+            
         }
         
     }
 
+    
+@media screen and (max-width: 480px) {
+section.ana{
+    margin: 0;
+    background-color: var(--koyu-gri);
+    .filtre{
+        display: none;
+    }
+    width: 100%;
+
+    .yazilar{
+        width: 100%;
+        margin: 0em;
+    
+        ul{
+            
+            width: 100%;
+            margin: 0;
+            margin-bottom: 5em;
+            margin-left: -1em
+        }
+
+        li{
+            display: block;
+            max-width: 100%;
+            //margin-left: -2.2em;
+            border-top: none;
+            border-bottom: 1px solid var(--vurgu);
+            border-right: none;
+            border-left: none;
+            border-radius: 0;
+            width: 100%;
+            margin-bottom: 0;
+            margin-top: 0;
+            .post-ici{
+                margin: 0 1em;
+            }
+        }
+        
+        
+    }
+}
+}

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url("https://fonts.cdnfonts.com/css/ozda");
 :root {
   --main: #000000;
   --vurgu:	#00FFFF;
@@ -30,14 +31,28 @@ ul {
   display: inline-flex;
   z-index: 100;
   background-color: var(--main);
-  border-bottom: 1px solid var(--vurgu);
+  border-bottom: 2px solid var(--vurgu);
   padding-left: 5em;
+  width: 100em;
 }
 .navbar-top .logo {
   display: inline-flex;
   color: black;
   margin-left: -3em;
   width: 50px;
+  font-family: "Ozda Condensed", sans-serif;
+  border-radius: 2em;
+  font-size: 1.2em;
+  border: 2px solid var(--vurgu);
+  padding-right: 1em;
+  padding-top: 0.2em;
+  padding-left: 0.2em;
+  scale: 1.3;
+}
+.navbar-top .logo a {
+  margin-top: -0.2em;
+  text-decoration: none;
+  color: var(--vurgu);
 }
 .navbar-top .logo img {
   border-radius: 5em;
@@ -59,6 +74,7 @@ ul {
   margin-left: 0.5em;
 }
 .navbar-top .arama button.ara-btn img {
+  margin-left: -0.2em;
   filter: invert(100%) sepia(54%) saturate(4364%) hue-rotate(101deg) brightness(107%) contrast(101%);
 }
 .navbar-top .arama button.ara-btn img:hover {
@@ -80,23 +96,17 @@ ul {
   width: 60em;
   padding: 0.3em 0;
 }
-.navbar-top .hesabim {
-  margin-left: 10em;
-  padding-right: 2em;
-}
-.navbar-top .hesabim a {
-  text-decoration: none;
-  color: var(--vurgu);
-  margin-left: -0.7em;
-}
 
 .navbar {
   position: fixed;
   background: var(--main);
-  border-right: 1px solid var(--vurgu);
+  border-right: 2px solid var(--vurgu);
+  transition: all 0.5s;
+  overflow-x: hidden;
   padding: 0 2em 0 3.7em;
-  width: 70px;
+  width: 1px;
   height: 999em;
+  white-space: nowrap;
 }
 .navbar nav {
   display: none;
@@ -106,12 +116,22 @@ ul {
   place-content: space-between;
 }
 .navbar ul {
-  display: block;
+  display: inline-block;
   margin-top: 5em;
   margin-left: -5em;
 }
+.navbar ul img {
+  width: 40px;
+  float: left;
+  margin-top: -0.5em;
+  z-index: 1000;
+}
 .navbar ul li {
-  margin: 4em 0 4em 0;
+  position: absolute;
+}
+.navbar ul li a {
+  z-index: 10000;
+  position: fixed;
 }
 .navbar ul li a:link {
   color: var(--vurgu);
@@ -121,11 +141,52 @@ ul {
   color: var(--vurgu);
   text-decoration: none;
 }
+.navbar ul li .li1 {
+  margin-top: 3em;
+}
+.navbar ul li img.li1 {
+  margin-top: 2.5em;
+}
+.navbar ul li .li2 {
+  margin-top: 8em;
+}
+.navbar ul li img.li2 {
+  margin-top: 7.5em;
+}
+.navbar ul li .li3 {
+  margin-top: 13em;
+}
+.navbar ul li img.li3 {
+  margin-top: 12.5em;
+}
+.navbar ul li .li4 {
+  margin-top: 18em;
+}
+.navbar ul li img.li4 {
+  margin-top: 17.5em;
+}
+.navbar ul li .gizle {
+  margin-left: 3em;
+  display: none;
+  transition: transform 0.5s ease;
+  transform: translateX(0);
+}
+.navbar ul .konteynir {
+  display: block;
+}
 .navbar .mobile-menu {
   color: white;
   cursor: pointer;
   margin-top: 3em;
   width: 50px;
+}
+
+.navbar:hover {
+  width: 100px;
+}
+.navbar:hover .gizle {
+  display: flex;
+  transform: translateX(0);
 }
 
 nav.menu-btn {
@@ -253,7 +314,7 @@ nav li a:hover {
 
 .hesabim-ayarlar {
   z-index: 99999;
-  border: 1px solid var(--vurgu);
+  border: 2px solid var(--vurgu);
   width: 25em;
   height: 32em;
   position: fixed;
@@ -269,7 +330,7 @@ nav li a:hover {
 }
 .hesabim-ayarlar .secenekler {
   margin-top: -2em;
-  border-right: 1px solid #00FFFF;
+  border-right: 2px solid #00FFFF;
 }
 .hesabim-ayarlar ul {
   overflow: hidden;
@@ -315,13 +376,14 @@ nav li a:hover {
           background-clip: text;
   padding-left: 0.2em;
   padding-right: 0.2em;
-  -webkit-text-stroke: 1px var(--vurgu);
+  -webkit-text-stroke: 2px var(--vurgu);
   color: var(--koyu-gri);
   -webkit-text-stroke: 4px transparent;
   margin-left: 0.5em;
   text-transform: bold;
 }
-.hesabim-ayarlar .hesap-pp {
+
+.hesap-pp {
   margin: 1em 0 0 5em;
   height: 10em;
   width: 10em;
@@ -332,17 +394,52 @@ nav li a:hover {
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
-.hesabim-ayarlar .hesap-pp span {
+.hesap-pp span {
   margin: auto;
-  margin-top: -0.3em;
+  margin-top: -0.2em;
   color: var(--koyu-gri);
-  -webkit-text-stroke: 1px var(--vurgu);
+  -webkit-text-stroke: 2px var(--vurgu);
   font-size: 9em;
   display: table;
   background: radial-gradient(circle at top left, #4c3fff, var(--vurgu));
   -webkit-background-clip: text;
           background-clip: text;
   -webkit-text-stroke: 8px transparent;
+}
+.hesap-pp img {
+  margin-left: 1em;
+  margin-top: 1em;
+}
+.hesap-pp img span {
+  font-size: 1em;
+}
+
+.hesabim {
+  margin-left: 11em;
+  padding-right: 4em;
+  margin-top: -1em;
+  height: 1em;
+  width: 1em;
+  text-transform: uppercase;
+  scale: 1.5;
+}
+.hesabim a {
+  text-decoration: none;
+  color: var(--vurgu);
+  margin-left: -0.7em;
+}
+.hesabim .hesabim-ici {
+  background-color: var(--koyu-gri);
+  border: 1px solid var(--vurgu);
+  border-radius: 20em;
+  width: 1.5em;
+  height: 1.5em;
+}
+.hesabim span {
+  margin: auto;
+  padding-left: 0.7em;
+  margin-top: -0.5em;
+  padding-bottom: 0.3em;
 }
 
 .blur-effect {
@@ -352,4 +449,128 @@ nav li a:hover {
 
 .goster {
   display: inline-flex;
+}
+
+.kapat-anchor {
+  position: absolute;
+  right: 0;
+}
+
+.kapat-anchor:hover {
+  cursor: pointer;
+}
+.kapat-anchor:hover img {
+  content: url(../../images/kapat-kir.svg);
+}
+
+.hesabim-icerik2 {
+  display: none;
+}
+.hesabim-icerik2 input.metin-gir {
+  border-style: solid;
+  padding: 0.5em;
+  border: double 2px transparent;
+  border-radius: 2em;
+  background-image: radial-gradient(circle at top left, var(--vurgu), var(--koyu-gri)), radial-gradient(circle at top left, var(--vurgu), #4c3fff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  margin-bottom: 0.3em;
+  margin-top: 1em;
+  margin-left: 5em;
+}
+.hesabim-icerik2 input.yolla {
+  padding: 0.5em;
+  border-style: solid;
+  border: double 2px transparent;
+  border-radius: 2em;
+  background-image: radial-gradient(circle at top left, var(--koyu-gri), var(--koyu-gri)), radial-gradient(circle at top left, var(--vurgu), #4c3fff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-color: var(--koyu-gri);
+  margin-top: 1em;
+  margin-left: 10em;
+  color: var(--vurgu);
+}
+.hesabim-icerik2 input.yolla:hover {
+  background-image: radial-gradient(circle at top left, var(--vurgu), #4c3fff), radial-gradient(circle at top left, var(--vurgu), #4c3fff);
+  color: black;
+}
+
+.m-navbar {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    width: 100%;
+    height: 100%;
+    background: gray;
+    position: relative;
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+  .navbar {
+    display: none;
+  }
+  .navbar-top {
+    display: none;
+  }
+  .m-navbar {
+    display: inline-block;
+    position: fixed;
+    background-color: black;
+    border-top: 2px solid var(--vurgu);
+    bottom: 0;
+    z-index: 100;
+    max-width: 100%;
+    width: 100%;
+    height: 3em;
+  }
+  .m-navbar ul {
+    left: 10px;
+  }
+  .m-navbar li {
+    display: inline;
+    margin-left: 0em;
+  }
+  .m-navbar li img {
+    z-index: 102;
+    width: 30px;
+    height: 30px;
+    margin-top: -0.3em;
+  }
+  .m-navbar li img.m-arama-btn {
+    filter: invert(100%) sepia(54%) saturate(4364%) hue-rotate(101deg) brightness(107%) contrast(101%);
+    width: 20px;
+    margin-left: 3em;
+  }
+  .m-navbar li img.m-yaz-btn {
+    margin-left: 3em;
+    width: 25px;
+  }
+  .m-navbar li img.m-def-btn {
+    margin-left: 3em;
+    width: 30px;
+  }
+  .m-navbar li .m-hesabim {
+    margin-top: -0.2em;
+    margin-left: 3em;
+    display: inline-flex;
+    position: absolute;
+    text-transform: uppercase;
+    scale: 1.1;
+  }
+  .m-navbar li .m-hesabim a {
+    text-decoration: none;
+    color: var(--vurgu);
+    margin-left: 0.3em;
+  }
+  .m-navbar li .m-hesabim .hesabim-ici {
+    background-color: black;
+    border: 1px solid var(--vurgu);
+    border-radius: 20em;
+    width: 1.5em;
+    height: 1.5em;
+  }
 }/*# sourceMappingURL=main.css.map */
