@@ -5,6 +5,7 @@ section.ana {
 }
 section.ana .kaydedilenler {
   color: var(--vurgu);
+  text-align: center;
 }
 section.ana .yazilar {
   margin: 1em 0.5em 0 0.5em;
@@ -82,7 +83,7 @@ section.ana .bulunamadi img {
     transform: matrix(1, 0, 0, 1, 0, 20);
   }
   50% {
-    transform: matrix(-0.8247766622, -0.4321145804, -0.8576068985, -0.9114906476, -0.9144133811, -0.8434999626);
+    transform: matrix(-0.7936804742, -0.8886869698, -0.2329301288, -0.6903958494, -0.7839265832, -0.9877589857);
   }
   100% {
     transform: matrix(1, 0, 0, 1, 0, 20);
@@ -167,6 +168,9 @@ section.ana .bulunamadi img {
   }
   section.ana .filtre {
     display: none;
+  }
+  section.ana .kaydedilenler {
+    padding-bottom: 0;
   }
   section.ana .m-ozel {
     z-index: 999;

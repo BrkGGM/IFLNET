@@ -2,6 +2,7 @@ section.ana{
     margin-left: 10em;
    .kaydedilenler{
     color: var(--vurgu);
+    text-align: center;
    }
     display: block;
     //BU CSS KODU HAYATINIZDA GÖRÜP GÖREBİLECEĞİNİZ 
@@ -203,7 +204,9 @@ section.ana{
     .filtre{
         display: none;
     }
-    
+    .kaydedilenler{
+        padding-bottom: 0;
+    }
     width: 100%;
     .m-ozel{
         z-index: 999;
