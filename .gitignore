@@ -1,5 +1,6 @@
 #ignore all .db files
 *.dbq
-__pycache__
-migrations
-instance
+__pycache__/
+migrations/
+instance/
+venv/
