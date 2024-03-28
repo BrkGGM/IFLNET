@@ -134,3 +134,46 @@ span{
     &:focus { outline: 2px dotted #55d7dc; }
   }
   
+
+
+
+@media screen and (max-width: 480px) {
+  section.hero{
+    margin: 0;
+  }
+  .baslik{
+    margin-left: 3em;
+    width: 25em;
+    
+  }
+  
+  .kategori{
+    margin-top: 1em;
+    margin-left: 5em;
+  }
+
+  .btn{
+    margin-top: 1em;
+    margin-left: 6.5em;
+    border-color: var(--vurgu);
+    color: var(--vurgu);
+    
+  }
+  .draw-border{
+    @include btn-border-drawing(var(--vurgu), var(--vurgu), 2px, bottom, right);
+
+  }
+
+  button{
+    border-color: var(--vurgu);
+    @include btn-border-drawing(var(--vurgu), var(--vurgu), 2px, bottom, right);
+  }
+  
+  button:hover{
+    background-color: var(--vurgu);
+    color: black;
+  }
+  .btn:hover{
+    color: black;
+  }
+}

@@ -159,10 +159,10 @@
     <div class="m-navbar">
 
         <ul>
-            <li><img src="../static/images/ev.svg" alt="Ana" ></li>
-            <li><img class="m-arama-btn" src="../static/images/arama.svg" alt="Ara"></li>
-            <li><img class="m-yaz-btn" src="../static/images/yaz.svg" alt="Yaz" ></li>
-            <li><img class="m-def-btn"src="../static/images/kaydedilenler.svg" alt="Ana" ></li>
+            <li><a href=" {{url_for('home')}} "><img src="../static/images/ev.svg" alt="Ana" ></a></li>
+            <li><a href="{{url_for('random')}}"><img class="m-arama-btn" src="../static/images/zar.svg" alt="Ara"></a></li>
+            <li><a href="{{url_for('yazi_yaz')}}"><img class="m-yaz-btn" src="../static/images/yaz.svg" alt="Yaz" ></a></li>
+            <li><a href="{{url_for('kaydedilenler')}}"><img class="m-def-btn"src="../static/images/kaydedilenler.svg" alt="Ana" ></a></li>
             <li><div class="m-hesabim">
                 <div class="hesabim-ici">
                     <a href="#"  onclick="toggleBlurEffect()" ><span  > {{c_user.username[0]}} </span></a>

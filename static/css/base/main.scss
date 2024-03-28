@@ -589,12 +589,24 @@ background: var(--vurgu);
     body{
         width: 100%;
         height: 100%;
-        background: gray;
+        background: black;
         position: relative;
     }
 
     html, body{
         overflow-x: hidden;
+    }
+
+    .popuplar{
+        left: 0;
+        
+       margin: 0;
+       li{
+        margin: 0;
+       }
+       .flashes{
+        margin: 0;
+       }
     }
 
 .navbar{
@@ -621,6 +633,8 @@ section.ana{
     height: 3em;
 
     
+    
+    
     ul{
         left: 10px;
         
@@ -636,8 +650,8 @@ section.ana{
             margin-top: -.3em;
         }
         img.m-arama-btn{
-            filter: invert(100%) sepia(54%) saturate(4364%) hue-rotate(101deg) brightness(107%) contrast(101%);
-            width: 20px;
+            //filter: invert(100%) sepia(54%) saturate(4364%) hue-rotate(101deg) brightness(107%) contrast(101%);
+            width: 25px;
             margin-left: 3em;
         }
         img.m-yaz-btn{

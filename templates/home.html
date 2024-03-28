@@ -4,13 +4,43 @@
 {%endblock%} 
 
 {% block content %}
-    
     <section class="ana">
+        <div class="m-ozel">
+            <div class="m-ust">
+                <div class="m-logo"><a href="/"><span>IFLNET </span></a></div>
+                
+
+            <form action="/" method="POST" id="arat">
+                <input type="text" id="m-ara" class="ara-bar" name="arama" placeholder="Bir yazı aratın">
+                <input type="submit" hidden />
+            <br>
+            <div class="m-ara-btn">
+                <button type="button" onclick="mAraAc();"><img src="../static/images/arama.svg" alt="ara" width="30px"></button>
+            </div>
+            </form>
+            
+            </div>
+            
+            <ul >
+                <div id="filtre">
+            {% for kategori in kategoriler %}
+                {% if filtre == kategori %}
+
+                    <li  ><a id="m-kat" href="/" class="aktif"> {{kategori}}</a></li>
+                {% else %}
+
+                    <li><a id="m-kat" href="http://127.0.0.1:5000/?filter={{kategori}}">{{kategori}}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul></div>
+        </div>
         <div class="yazilar">
+            
             <ul class="yazi">
                 {% if arama %}
             <div class="aratma">
                 <span class="ara-sonucu"> '{{aranan}}' araması üzerine {{arama_bulunan}} adet sonuç bulunmuştur. </span>
+                
             </div>
             {% endif %}
                 {% if yazilar %}

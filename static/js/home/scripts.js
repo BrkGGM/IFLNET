@@ -7,8 +7,11 @@ var newTextContent = textContent.replaceAll("-", " ")
 a.textContent = newTextContent;
 }
 
-console.log('aabb')
-// JavaScript to toggle blur effect
 
+
+function mAraAc(){
+    var bar = document.getElementById("m-ara");
+    bar.classList.toggle('ara-aktif');
+}
 
 

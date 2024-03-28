@@ -82,4 +82,30 @@ section.ana .yazar {
   position: absolute;
   left: -9px;
   top: 17px;
+}
+
+@media screen and (max-width: 480px) {
+  section.ana {
+    margin: 0;
+  }
+  h2 {
+    margin-left: 3em !important;
+    margin-top: 0.2em !important;
+    margin-bottom: -0.3em !important;
+    word-break: break-all;
+    width: 5em;
+  }
+  .baslik-text {
+    margin-left: 0;
+  }
+  .tag-div {
+    margin-top: 0.3em;
+    padding-left: 0.5em;
+  }
+  p {
+    width: 22em;
+  }
+  .yazi .icerik {
+    width: 5em;
+  }
 }/*# sourceMappingURL=main.css.map */

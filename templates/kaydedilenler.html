@@ -4,12 +4,17 @@
 {%endblock%} 
 
 {% block content %}
-    
+
     <section class="ana">
+        <div class="kaydedilenler">
+            <h2>Kaydedilenler</h2>
+        </div>
+        
+        
         <div class="yazilar">
             <ul class="yazi">
                 {% for yazi in yazilar|reverse %}
-                    <li><a href="/yazi/{{yazi.baslik}}"> <div class="post-ici"><span> {{yazi.baslik}} </span><br> {{yazi.message|safe}} </div> </a></li>
+                <a href="/yazi/{{yazi.baslik}}"><li> <div class="post-ici"><span> {{yazi.baslik}} </span><br> {{yazi.message|safe}} </div> </li></a>
                 {% endfor %}
                 
             </ul>
